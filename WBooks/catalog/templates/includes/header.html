@@ -1,0 +1,16 @@
+<ul class="sidebar-nav">
+     <li><a href="{% url 'catalog:index' %}">Главная страница</a></li>
+     <li><a href="{% url 'catalog:books' %}">Bce книги</a></li>
+     <li><a href="{% url 'catalog:authors' %}">Bce авторы</a></li>
+
+     {% if user.is_authenticated %}
+          <li>Пользователь: {{ user.get_username }}</li>
+          <li><a href="{% url 'users:logout' %}?next={{ request.path }}">Logout</a></li>
+          <li><a href="{% url 'catalog:my-borrowed' %}">Мои заказы</a></li>
+          <li><a href="{% url 'catalog:authors_create' %}">Добавить авторов</a></li>
+          <li><a href="{% url 'catalog:book_create' %}">Добавить книгу</a></li>
+
+     {% else %}
+          <li><a href="{% url 'users:login' %}?next={{ request.path }}">Login</a></li>
+     {% endif %}
+</ul>

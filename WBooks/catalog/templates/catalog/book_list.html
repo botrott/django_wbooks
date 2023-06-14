@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Список книг в БД</h1>
+    {% if book_list %}
+  <ul>
+    {% for book in book_list %}
+    <li>
+      <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+        {{ book.genre }}
+        {% if user.is_authenticated %}
+            {% if book.pk %}
+              <strong><a href="{% url 'catalog:book_update' pk=book.pk %}">изменить книгу</a></strong>,
+              <strong><a href="{% url 'catalog:book_delete' pk=book.pk %}">удалить книгу</a></strong>
+            {% endif %}
+        {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>В базе данных нет книг</p>
+  {% endif %}
+{% endblock %}

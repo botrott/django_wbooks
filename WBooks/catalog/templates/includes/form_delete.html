@@ -1,0 +1,19 @@
+{% if 'author' in request.path %}
+  <h1>Удаление автора</h1>
+    <p>Вы уверены, что хотите удалить автора: {{ authors }}?</p>
+{% endif %}
+
+{% if 'book' in request.path %}
+  <h1>Удаление книги</h1>
+  <p>Вы уверены, что хотите удалить книгу: {{ book }}?</p>
+{% endif %}
+
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="submit"  value="Да, удалить">
+    {% if 'author' in request.path %}
+    <input type="button"  value="Нет" onclick="location.href='http://127.0.0.1:8000/authors'">
+    {% else %}
+    <input type="button"  value="Нет" onclick="location.href='http://127.0.0.1:8000/books'">
+    {% endif %}
+  </form>
