@@ -12,6 +12,7 @@ DOUBLE_LINKLST = DoublyLinkedList()
 D2 = DoublyLinkedList()
 ORDERED = OrderedListSimple()
 
+SEPARATOR = 60
 TEXT_INS = 'Введите числа через пробел : '
 TEXT_INSERT = 'd => документация, для ввода ваших значений => l, q <= Вернуться назад : '
 TEXT_INSERT_STRUCTUR = 'd => документация, q <= Вернуться назад : '
@@ -61,7 +62,7 @@ def response_for_insert_sort(num: str):
 
 
 def response_menu(INS):
-    print('=' * 200)
+    print('=' * SEPARATOR)
     if INS in 'фаaf':
         with open('text/algoritm_text.txt') as file_a:
             print(file_a.read())
@@ -71,10 +72,10 @@ def response_menu(INS):
 
     try:
         while True:
-            print('=' * 200)
+            print('=' * SEPARATOR)
             INSERT = input(
                 f'Введите цифру {"алогоритма" if INS in "фаaf" else "структуры данных"} =>, q <= Вернуться назад : ')
-            print('=' * 200)
+            print('=' * SEPARATOR)
             if INSERT in 'qй':
                 break
             if not INSERT.isdigit():
